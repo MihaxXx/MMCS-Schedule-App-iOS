@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 54;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -13,6 +13,11 @@
 		7467A3C92959CF18007B4F45 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7467A3C72959CF18007B4F45 /* Main.storyboard */; };
 		7467A3CB2959CF22007B4F45 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7467A3CA2959CF22007B4F45 /* Assets.xcassets */; };
 		7467A3CE2959CF22007B4F45 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7467A3CC2959CF22007B4F45 /* LaunchScreen.storyboard */; };
+		74A7E893295A5F170070C8BB /* LessonServerModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74A7E88F295A5F170070C8BB /* LessonServerModel.swift */; };
+		74A7E894295A5F170070C8BB /* TeacherModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74A7E890295A5F170070C8BB /* TeacherModel.swift */; };
+		74A7E895295A5F170070C8BB /* CurriculaServerModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74A7E891295A5F170070C8BB /* CurriculaServerModel.swift */; };
+		74A7E899295A5FB40070C8BB /* LessonModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74A7E898295A5FB40070C8BB /* LessonModel.swift */; };
+		74A7E89C295A677E0070C8BB /* Grade+Group.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74A7E89B295A677E0070C8BB /* Grade+Group.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +29,11 @@
 		7467A3CA2959CF22007B4F45 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		7467A3CD2959CF22007B4F45 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		7467A3CF2959CF22007B4F45 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		74A7E88F295A5F170070C8BB /* LessonServerModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LessonServerModel.swift; sourceTree = "<group>"; };
+		74A7E890295A5F170070C8BB /* TeacherModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TeacherModel.swift; sourceTree = "<group>"; };
+		74A7E891295A5F170070C8BB /* CurriculaServerModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CurriculaServerModel.swift; sourceTree = "<group>"; };
+		74A7E898295A5FB40070C8BB /* LessonModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LessonModel.swift; sourceTree = "<group>"; };
+		74A7E89B295A677E0070C8BB /* Grade+Group.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Grade+Group.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,6 +66,7 @@
 		7467A3C02959CF18007B4F45 /* MMCS Schedule App-iOS */ = {
 			isa = PBXGroup;
 			children = (
+				74A7E88D295A5EC80070C8BB /* Models */,
 				7467A3C12959CF18007B4F45 /* AppDelegate.swift */,
 				7467A3C32959CF18007B4F45 /* SceneDelegate.swift */,
 				7467A3C52959CF18007B4F45 /* ViewController.swift */,
@@ -65,6 +76,18 @@
 				7467A3CF2959CF22007B4F45 /* Info.plist */,
 			);
 			path = "MMCS Schedule App-iOS";
+			sourceTree = "<group>";
+		};
+		74A7E88D295A5EC80070C8BB /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				74A7E898295A5FB40070C8BB /* LessonModel.swift */,
+				74A7E891295A5F170070C8BB /* CurriculaServerModel.swift */,
+				74A7E88F295A5F170070C8BB /* LessonServerModel.swift */,
+				74A7E890295A5F170070C8BB /* TeacherModel.swift */,
+				74A7E89B295A677E0070C8BB /* Grade+Group.swift */,
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -102,7 +125,7 @@
 				};
 			};
 			buildConfigurationList = 7467A3B92959CF18007B4F45 /* Build configuration list for PBXProject "MMCS Schedule App-iOS" */;
-			compatibilityVersion = "Xcode 9.3";
+			compatibilityVersion = "Xcode 12.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
@@ -137,8 +160,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				74A7E894295A5F170070C8BB /* TeacherModel.swift in Sources */,
+				74A7E899295A5FB40070C8BB /* LessonModel.swift in Sources */,
+				74A7E89C295A677E0070C8BB /* Grade+Group.swift in Sources */,
 				7467A3C62959CF18007B4F45 /* ViewController.swift in Sources */,
 				7467A3C22959CF18007B4F45 /* AppDelegate.swift in Sources */,
+				74A7E895295A5F170070C8BB /* CurriculaServerModel.swift in Sources */,
+				74A7E893295A5F170070C8BB /* LessonServerModel.swift in Sources */,
 				7467A3C42959CF18007B4F45 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -289,6 +317,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 84LQ3B37P5;
 				INFOPLIST_FILE = "MMCS Schedule App-iOS/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -308,6 +337,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 84LQ3B37P5;
 				INFOPLIST_FILE = "MMCS Schedule App-iOS/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
