@@ -14,6 +14,7 @@ class ScheduleViewController: UIViewController {
     var role: String!
     
     var lessonmodels = [LessonModel]()
+    var daysOfWeek = [Int]()
     
     @IBOutlet weak var collectionView: UICollectionView! {
         didSet {
@@ -94,29 +95,38 @@ class ScheduleViewController: UIViewController {
                                             isUp: isUp ?? 2)
             lessonmodels.append(sheduleLesson)
             
-            lessonmodels = lessonmodels.sorted(by: {$0.timeSince < $1.timeSince})
+            lessonmodels = lessonmodels.sorted(by: {($0.dayOfWeek,$0.timeSince) < ($1.dayOfWeek,$1.timeSince)})
+            
+            daysOfWeek = Array(Set(lessonmodels.map { (les) -> Int in les.dayOfWeek })).sorted()
             self.collectionView.reloadData()
         }
+    }
+    func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
+        let scheduleSectionHeader = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "ScheduleSectionHeader", for: indexPath) as! ScheduleSectionHeader
+        scheduleSectionHeader.Header = String(daysOfWeek[indexPath.section])
+        return scheduleSectionHeader
     }
 }
 
 extension ScheduleViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     
     func numberOfSections(in collectionView: UICollectionView) -> Int {
-        return 1
+        return daysOfWeek.count
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return lessonmodels.count
+        let day = daysOfWeek[section]
+        return lessonmodels.filter { (les) -> Bool in les.dayOfWeek == day}.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let currentlessons = lessonmodels.filter( {$0.dayOfWeek == daysOfWeek[indexPath.section]})
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "subjectCell", for: indexPath) as! SubjectCollectionCell
-            cell.configure(timeS: lessonmodels[indexPath.row].timeSince,
-                           timeU: lessonmodels[indexPath.row].timeBefore,
-                           sbjName: lessonmodels[indexPath.row].subjectName,
-                           tchName: lessonmodels[indexPath.row].teacherName,
-                           roomS: lessonmodels[indexPath.row].room + " к.")
+            cell.configure(timeS: currentlessons[indexPath.row].timeSince,
+                           timeU: currentlessons[indexPath.row].timeBefore,
+                           sbjName: currentlessons[indexPath.row].subjectName,
+                           tchName: currentlessons[indexPath.row].teacherName,
+                           roomS: currentlessons[indexPath.row].room + " к.")
         return cell
 
     }
@@ -130,4 +140,13 @@ extension ScheduleViewController: UICollectionViewDelegateFlowLayout {
         return CGSize(width: collectionView.bounds.width - 20, height: 60)
     }
     
+}
+
+class ScheduleSectionHeader : UICollectionReusableView{
+    @IBOutlet weak var HeaderLabel: UILabel!
+    var Header: String! {
+        didSet {
+            HeaderLabel.text = Header
+        }
+    }
 }
