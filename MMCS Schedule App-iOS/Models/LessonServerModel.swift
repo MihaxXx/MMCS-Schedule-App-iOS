@@ -13,5 +13,11 @@ class LessonServerModel: Codable {
 	var subcount: Int
 	var uberId: Int
 	var timeslot: String
-	
+    
+    enum CodingKeys : String, CodingKey {
+        case uberId = "uberid"
+        case id
+        case subcount
+        case timeslot
+    }
 }

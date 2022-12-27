@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="subjectCell" translatesAutoresizingMaskIntoConstraints="NO" id="nHz-cQ-YQD" customClass="SubjectCollectionCell" customModule="MMCS_Schedule_App_iOS" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="355" height="60"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="355" height="60"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="08:00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mTu-tc-yjP">
+                        <rect key="frame" x="5" y="3" width="45" height="27"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="27" id="TUM-yK-AxK"/>
+                            <constraint firstAttribute="width" constant="45" id="jrR-bl-lQ1"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" weight="light" pointSize="14"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="09:35" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4zO-9U-GsT">
+                        <rect key="frame" x="5" y="40" width="45" height="17"/>
+                        <fontDescription key="fontDescription" type="system" weight="light" pointSize="14"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Subject Name" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" minimumFontSize="12" translatesAutoresizingMaskIntoConstraints="NO" id="jTF-d3-Jzn">
+                        <rect key="frame" x="53" y="0.0" width="297" height="33"/>
+                        <fontDescription key="fontDescription" type="boldSystem" pointSize="14"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Room" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" minimumFontSize="9" translatesAutoresizingMaskIntoConstraints="NO" id="4jc-yY-68B">
+                        <rect key="frame" x="302" y="38" width="48" height="19"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="48" id="fmQ-e0-Ppe"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Teacher Name" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Gg2-p2-VFq">
+                        <rect key="frame" x="53" y="38" width="241" height="19"/>
+                        <fontDescription key="fontDescription" type="system" weight="thin" pointSize="13"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+            </view>
+            <color key="backgroundColor" white="0.92978639367185989" alpha="0.90575872315950923" colorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstItem="Gg2-p2-VFq" firstAttribute="top" secondItem="4jc-yY-68B" secondAttribute="top" id="5uD-5f-Ph2"/>
+                <constraint firstItem="Gg2-p2-VFq" firstAttribute="top" secondItem="jTF-d3-Jzn" secondAttribute="bottom" constant="5" id="BNd-pD-XDk"/>
+                <constraint firstAttribute="trailing" secondItem="jTF-d3-Jzn" secondAttribute="trailing" constant="5" id="Bgh-Be-bpe"/>
+                <constraint firstItem="jTF-d3-Jzn" firstAttribute="centerY" secondItem="mTu-tc-yjP" secondAttribute="centerY" id="DI6-Va-0ta"/>
+                <constraint firstItem="mTu-tc-yjP" firstAttribute="leading" secondItem="nHz-cQ-YQD" secondAttribute="leading" constant="5" id="ICV-zP-pfr"/>
+                <constraint firstAttribute="bottom" secondItem="4zO-9U-GsT" secondAttribute="bottom" constant="3" id="Iyx-ZM-ESY"/>
+                <constraint firstAttribute="trailing" secondItem="4jc-yY-68B" secondAttribute="trailing" constant="5" id="JoN-g8-iGs"/>
+                <constraint firstItem="4jc-yY-68B" firstAttribute="centerY" secondItem="Gg2-p2-VFq" secondAttribute="centerY" id="KcU-xd-aab"/>
+                <constraint firstItem="jTF-d3-Jzn" firstAttribute="leading" secondItem="mTu-tc-yjP" secondAttribute="trailing" constant="3" id="MQB-pL-HFL"/>
+                <constraint firstItem="mTu-tc-yjP" firstAttribute="top" secondItem="nHz-cQ-YQD" secondAttribute="top" constant="3" id="P5p-te-xox"/>
+                <constraint firstItem="mTu-tc-yjP" firstAttribute="trailing" secondItem="4zO-9U-GsT" secondAttribute="trailing" id="X2Y-KW-tR8"/>
+                <constraint firstItem="Gg2-p2-VFq" firstAttribute="bottom" secondItem="4zO-9U-GsT" secondAttribute="bottom" id="iXE-0H-TKA"/>
+                <constraint firstItem="4jc-yY-68B" firstAttribute="leading" secondItem="Gg2-p2-VFq" secondAttribute="trailing" constant="8" symbolic="YES" id="lpU-kE-8j8"/>
+                <constraint firstItem="jTF-d3-Jzn" firstAttribute="leading" secondItem="Gg2-p2-VFq" secondAttribute="leading" id="tWK-lM-p7a"/>
+                <constraint firstItem="mTu-tc-yjP" firstAttribute="leading" secondItem="4zO-9U-GsT" secondAttribute="leading" id="whg-TZ-Q91"/>
+                <constraint firstItem="Gg2-p2-VFq" firstAttribute="bottom" secondItem="4jc-yY-68B" secondAttribute="bottom" id="ymy-ny-7ve"/>
+                <constraint firstItem="jTF-d3-Jzn" firstAttribute="top" secondItem="nHz-cQ-YQD" secondAttribute="topMargin" id="zYB-nQ-33h"/>
+            </constraints>
+            <size key="customSize" width="355" height="91"/>
+            <connections>
+                <outlet property="room" destination="4jc-yY-68B" id="ZWf-5W-K2k"/>
+                <outlet property="subjectName" destination="jTF-d3-Jzn" id="Ly2-Pu-GTo"/>
+                <outlet property="teacherName" destination="Gg2-p2-VFq" id="sER-FW-Ija"/>
+                <outlet property="timeSince" destination="mTu-tc-yjP" id="ZIm-uV-13V"/>
+                <outlet property="timeUntil" destination="4zO-9U-GsT" id="105-vX-qVY"/>
+            </connections>
+            <point key="canvasLocation" x="-162.40000000000001" y="-22.488755622188908"/>
+        </collectionViewCell>
+    </objects>
+</document>
