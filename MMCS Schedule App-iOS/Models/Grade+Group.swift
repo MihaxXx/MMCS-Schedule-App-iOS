@@ -21,7 +21,8 @@ class Grade: Codable {
 class Group: Codable {
     let id: Int
     let name: String
-    let num, gradeid, grorder: Int
+    let num, gradeid: Int
+    let grorder: Int?
 
     init(id: Int, name: String, num: Int, gradeid: Int, grorder: Int) {
         self.id = id
