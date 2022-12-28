@@ -114,6 +114,10 @@ extension ViewController: UIPickerViewDataSource, UIPickerViewDelegate{
                 List_NmOrGr.isHidden = false
                 List_NmOrGr.placeholder = "ФИО"
             }
+            //Clear next steps fields on change
+            List_NmOrGr.text = ""
+            List_Groups.text = ""
+            List_Groups.isHidden = true
         case 2:
             List_NmOrGr.text = NmOrGr[row]
             List_NmOrGr.resignFirstResponder()
@@ -127,6 +131,8 @@ extension ViewController: UIPickerViewDataSource, UIPickerViewDelegate{
                 id = teachers[row].id
                 Ok_btn.isEnabled = true
             }
+            //Clear next steps fields on change
+            List_Groups.text = ""
         case 3:
             List_Groups.text = Groups[row]
             List_Groups.resignFirstResponder()
