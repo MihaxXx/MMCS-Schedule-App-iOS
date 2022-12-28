@@ -24,7 +24,6 @@ class ScheduleViewController: UIViewController {
             collectionView.dataSource = self
             let nib = UINib(nibName: "SubjectCollectionCell", bundle: Bundle.main)
             collectionView.register(nib, forCellWithReuseIdentifier: "subjectCell")
-            collectionView.contentInset = UIEdgeInsets(top: 20, left: 10, bottom: 5, right: 10)
         }
     }
     
@@ -65,8 +64,8 @@ class ScheduleViewController: UIViewController {
                 break
             }
             let sheduleLesson = LessonModel(dayOfWeek: Int(dayOfWeek)!,
-                                            timeSince: timeSince ?? "",
-                                            timeBefore: timeUntil ?? "",
+                                            timeSince: timeSince ,
+                                            timeBefore: timeUntil ,
                                             room: roomName ?? "",
                                             teacherName: teacherName ?? "",
                                             subjectName: subjectName ?? "",

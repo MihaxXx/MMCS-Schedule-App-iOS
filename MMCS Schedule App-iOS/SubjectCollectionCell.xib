@@ -26,7 +26,7 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="09:35" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4zO-9U-GsT">
-                        <rect key="frame" x="5" y="40" width="45" height="17"/>
+                        <rect key="frame" x="5" y="38" width="45" height="19"/>
                         <fontDescription key="fontDescription" type="system" weight="light" pointSize="14"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
@@ -46,7 +46,7 @@
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Teacher Name" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Gg2-p2-VFq">
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Teacher Name" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" minimumFontSize="11" translatesAutoresizingMaskIntoConstraints="NO" id="Gg2-p2-VFq">
                         <rect key="frame" x="53" y="38" width="241" height="19"/>
                         <fontDescription key="fontDescription" type="system" weight="thin" pointSize="13"/>
                         <nil key="textColor"/>
@@ -70,6 +70,7 @@
                 <constraint firstItem="Gg2-p2-VFq" firstAttribute="bottom" secondItem="4zO-9U-GsT" secondAttribute="bottom" id="iXE-0H-TKA"/>
                 <constraint firstItem="4jc-yY-68B" firstAttribute="leading" secondItem="Gg2-p2-VFq" secondAttribute="trailing" constant="8" symbolic="YES" id="lpU-kE-8j8"/>
                 <constraint firstItem="jTF-d3-Jzn" firstAttribute="leading" secondItem="Gg2-p2-VFq" secondAttribute="leading" id="tWK-lM-p7a"/>
+                <constraint firstItem="Gg2-p2-VFq" firstAttribute="centerY" secondItem="4zO-9U-GsT" secondAttribute="centerY" id="wNJ-y4-Yhk"/>
                 <constraint firstItem="mTu-tc-yjP" firstAttribute="leading" secondItem="4zO-9U-GsT" secondAttribute="leading" id="whg-TZ-Q91"/>
                 <constraint firstItem="Gg2-p2-VFq" firstAttribute="bottom" secondItem="4jc-yY-68B" secondAttribute="bottom" id="ymy-ny-7ve"/>
                 <constraint firstItem="jTF-d3-Jzn" firstAttribute="top" secondItem="nHz-cQ-YQD" secondAttribute="topMargin" id="zYB-nQ-33h"/>
