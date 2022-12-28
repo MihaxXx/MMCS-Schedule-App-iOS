@@ -21,6 +21,10 @@
 		74A7E8CF295B44060070C8BB /* ScheduleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74A7E8CE295B44060070C8BB /* ScheduleViewController.swift */; };
 		74A7E939295B63020070C8BB /* SubjectCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74A7E937295B63020070C8BB /* SubjectCollectionCell.swift */; };
 		74A7E93A295B63020070C8BB /* SubjectCollectionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 74A7E938295B63020070C8BB /* SubjectCollectionCell.xib */; };
+		74A7E944295BADD70070C8BB /* Request.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74A7E940295BADD60070C8BB /* Request.swift */; };
+		74A7E945295BADD70070C8BB /* APIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74A7E941295BADD60070C8BB /* APIClient.swift */; };
+		74A7E946295BADD70070C8BB /* NetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74A7E942295BADD70070C8BB /* NetworkError.swift */; };
+		74A7E947295BADD70070C8BB /* Response.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74A7E943295BADD70070C8BB /* Response.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -40,6 +44,10 @@
 		74A7E8CE295B44060070C8BB /* ScheduleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleViewController.swift; sourceTree = "<group>"; };
 		74A7E937295B63020070C8BB /* SubjectCollectionCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SubjectCollectionCell.swift; sourceTree = "<group>"; };
 		74A7E938295B63020070C8BB /* SubjectCollectionCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SubjectCollectionCell.xib; sourceTree = "<group>"; };
+		74A7E940295BADD60070C8BB /* Request.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Request.swift; sourceTree = "<group>"; };
+		74A7E941295BADD60070C8BB /* APIClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIClient.swift; sourceTree = "<group>"; };
+		74A7E942295BADD70070C8BB /* NetworkError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkError.swift; sourceTree = "<group>"; };
+		74A7E943295BADD70070C8BB /* Response.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Response.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -72,6 +80,7 @@
 		7467A3C02959CF18007B4F45 /* MMCS Schedule App-iOS */ = {
 			isa = PBXGroup;
 			children = (
+				74A7E93F295BADC40070C8BB /* Network */,
 				74A7E937295B63020070C8BB /* SubjectCollectionCell.swift */,
 				74A7E938295B63020070C8BB /* SubjectCollectionCell.xib */,
 				74A7E88D295A5EC80070C8BB /* Models */,
@@ -97,6 +106,17 @@
 				74A7E89B295A677E0070C8BB /* Grade+Group.swift */,
 			);
 			path = Models;
+			sourceTree = "<group>";
+		};
+		74A7E93F295BADC40070C8BB /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				74A7E941295BADD60070C8BB /* APIClient.swift */,
+				74A7E942295BADD70070C8BB /* NetworkError.swift */,
+				74A7E940295BADD60070C8BB /* Request.swift */,
+				74A7E943295BADD70070C8BB /* Response.swift */,
+			);
+			path = Network;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -174,12 +194,16 @@
 				74A7E899295A5FB40070C8BB /* LessonModel.swift in Sources */,
 				74A7E939295B63020070C8BB /* SubjectCollectionCell.swift in Sources */,
 				74A7E89C295A677E0070C8BB /* Grade+Group.swift in Sources */,
+				74A7E944295BADD70070C8BB /* Request.swift in Sources */,
 				74A7E8CF295B44060070C8BB /* ScheduleViewController.swift in Sources */,
+				74A7E947295BADD70070C8BB /* Response.swift in Sources */,
 				7467A3C62959CF18007B4F45 /* ViewController.swift in Sources */,
 				7467A3C22959CF18007B4F45 /* AppDelegate.swift in Sources */,
 				74A7E895295A5F170070C8BB /* CurriculaServerModel.swift in Sources */,
 				74A7E893295A5F170070C8BB /* LessonServerModel.swift in Sources */,
+				74A7E946295BADD70070C8BB /* NetworkError.swift in Sources */,
 				7467A3C42959CF18007B4F45 /* SceneDelegate.swift in Sources */,
+				74A7E945295BADD70070C8BB /* APIClient.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

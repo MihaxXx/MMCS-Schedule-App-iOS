@@ -18,11 +18,15 @@ class ViewController: UIViewController {
     var NmOrGr: [String]!
     var Groups: [String]!
     var id: Int = -1
+    var grades: [Grade]!
     var groups: [Group]!
+    var teachers: [Teacher]!
     
     var RolePickerView = UIPickerView()
     var NmOrGrPickerView = UIPickerView()
     var GroupsPickerView = UIPickerView()
+    
+    let network = APIClient()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -42,19 +46,21 @@ class ViewController: UIViewController {
         NmOrGrPickerView.tag = 2
         GroupsPickerView.tag = 3
         
+        //getGroups(forGrade: 1)
+        
         //Ok_btn.addTarget(self, action: #selector(Ok_btnClicked), for: .touchUpInside)
         
-        let gradesJSON = """
+        /*let gradesJSON = """
 [{"id":1,"num":1,"degree":"bachelor"},{"id":2,"num":2,"degree":"bachelor"},{"id":3,"num":3,"degree":"bachelor"},{"id":4,"num":4,"degree":"bachelor"},{"id":13,"num":5,"degree":"bachelor"},{"id":6,"num":1,"degree":"master"},{"id":7,"num":2,"degree":"master"},{"id":8,"num":1,"degree":"postgraduate"},{"id":9,"num":2,"degree":"postgraduate"}]
 """.data(using: .utf8)!
         let groupsJSON = """
 [{"id":1,"name":"ПМИ","num":1,"gradeid":1,"grorder":1},{"id":7,"name":"ПМИ","num":2,"gradeid":1,"grorder":2},{"id":14,"name":"ПМИ","num":3,"gradeid":1,"grorder":3},{"id":19,"name":"ПМИ","num":4,"gradeid":1,"grorder":4},{"id":75,"name":"ПМИ","num":5,"gradeid":1,"grorder":5},{"id":99,"name":"ПМИ","num":6,"gradeid":1,"grorder":6},{"id":25,"name":"ММ","num":1,"gradeid":1,"grorder":7},{"id":46,"name":"ФИиИТ","num":1,"gradeid":1,"grorder":8},{"id":51,"name":"ФИиИТ","num":2,"gradeid":1,"grorder":9},{"id":97,"name":"ФИиИТ","num":3,"gradeid":1,"grorder":10},{"id":98,"name":"ФИиИТ","num":4,"gradeid":1,"grorder":11},{"id":133,"name":"ФИиИТ","num":5,"gradeid":1,"grorder":12},{"id":82,"name":"ПОМ","num":1,"gradeid":1,"grorder":13},{"id":92,"name":"ПОМ","num":2,"gradeid":1,"grorder":14},{"id":128,"name":"ПОМИ","num":1,"gradeid":1,"grorder":15},{"id":93,"name":"ПОМИ","num":2,"gradeid":1,"grorder":16}]
 """.data(using: .utf8)!
         let jsonDecoder = JSONDecoder()
-        let grades = try! jsonDecoder.decode([Grade].self, from: gradesJSON)
-        groups = try! jsonDecoder.decode([Group].self, from: groupsJSON)
+        grades = try! jsonDecoder.decode([Grade].self, from: gradesJSON)
         NmOrGr = grades.map { (gr) -> String in gr.degree + ", " + String(gr.num) }
-        Groups = groups.map { (gr) -> String in gr.name + ", " + String(gr.num) }
+        groups = try! jsonDecoder.decode([Group].self, from: groupsJSON)
+        Groups = groups.map { (gr) -> String in gr.name + ", " + String(gr.num) }*/
     }
 
 
@@ -97,13 +103,13 @@ extension ViewController: UIPickerViewDataSource, UIPickerViewDelegate{
             Role.resignFirstResponder()
             
             if (row == 0) {
-                //TODO: Fill list with grades
+                getGrades()
                 List_NmOrGr.resignFirstResponder()
                 List_NmOrGr.isHidden = false
                 List_NmOrGr.placeholder = "Курс"
             }
             else{
-                //TODO: Fill list with grades
+                //TODO: Fill list with teachers
                 List_NmOrGr.resignFirstResponder()
                 List_NmOrGr.isHidden = false
                 List_NmOrGr.placeholder = "ФИО"
@@ -115,6 +121,7 @@ extension ViewController: UIPickerViewDataSource, UIPickerViewDelegate{
             //TODO: Fill list with coresponding groups
             if (Role.text=="Student")
             {
+                getGroups(forGrade: grades[row].id)
                 List_Groups.resignFirstResponder()
                 List_Groups.isHidden = false
             }
@@ -148,6 +155,36 @@ extension ViewController: UIPickerViewDataSource, UIPickerViewDelegate{
             vc.id = id
             vc.role = Role.text
             vc.header = (Role.text=="Student") ? List_NmOrGr.text! + " – " + List_Groups.text! : List_NmOrGr.text!
+            vc.network = network
         }
+    }
+    func getGrades(){
+        network.getGradeList() { result in
+            switch result {
+            case let .success(grades):
+                self.grades = grades
+                self.fillGrades()
+            case let .failure(error):
+                print(error)
+            }
+        }
+    }
+    func fillGrades(){
+         NmOrGr = grades.map { (gr) -> String in gr.degree + ", " + String(gr.num) }
+    }
+    func getGroups(forGrade gradeID: Int){
+        network.getGroupList(gradeID) {
+            result in
+            switch result {
+            case let .success(groups):
+                self.groups = groups
+                self.fillGroups()
+            case let .failure(error):
+                print(error)
+            }
+        }
+    }
+    func fillGroups(){
+        Groups = groups.map { (gr) -> String in gr.name + ", " + String(gr.num) }
     }
 }

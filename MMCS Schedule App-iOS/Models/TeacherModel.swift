@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct Teacher {
+struct Teacher: Codable {
 	let id: Int
 	let name: String
 	let degree: String
