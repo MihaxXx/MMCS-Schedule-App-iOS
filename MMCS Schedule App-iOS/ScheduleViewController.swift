@@ -76,6 +76,54 @@ class ScheduleViewController: UIViewController {
         return lesmodels
     }
     
+    fileprivate func convertSchOfTeacher(_ schedule: SchOfTeacher) -> [LessonModel]{
+        var lessons = [LessonModel]()
+        for item in schedule.lessons {
+            item.timeslot.remove(at: item.timeslot.index(before: item.timeslot.endIndex))
+            item.timeslot.remove(at: item.timeslot.startIndex)
+            let timeslotArray = item.timeslot.components(separatedBy: ",")
+            guard timeslotArray.count == 4 else { continue }
+            var timeSince = timeslotArray[1]
+            let dayOfWeek = timeslotArray[0]
+            var timeUntil = timeslotArray[2]
+            let upperLowerWeek = timeslotArray[3]
+            var groups: String = ""
+            var subjectName: String = ""
+            var roomName: String = ""
+            for cur in schedule.curricula {
+                if item.id == cur.lessonId {
+                    subjectName = cur.subjectName
+                    roomName = cur.roomName
+                }
+            }
+            groups = schedule.groups.filter {(group) -> Bool in group.uberid == item.uberId}.map {(group) -> String in "\(group.degree.prefix(4)) \(String(group.gradenum)) \(group.name)-\(String(group.groupnum))"}.joined(separator: ", ")
+            let timeSinceArray = timeSince.components(separatedBy: ":")
+            timeSince = timeSinceArray[0] + ":" + timeSinceArray[1]
+            let timeUntilArray = timeUntil.components(separatedBy: ":")
+            timeUntil = timeUntilArray[0] + ":" + timeUntilArray[1]
+            var isUp: Int?
+            switch upperLowerWeek {
+            case "full":
+                isUp = 2
+            case "upper":
+                isUp = 0
+            case "lower":
+                isUp = 1
+            default:
+                break
+            }
+            let sheduleLesson = LessonModel(dayOfWeek: Int(dayOfWeek)!,
+                                            timeSince: timeSince,
+                                                   timeBefore: timeUntil,
+                                                   room: roomName,
+                                                   teacherName: groups,
+                                                   subjectName: subjectName,
+                                                   isUp: isUp!)
+            lessons.append(sheduleLesson)
+        }
+        return lessons
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -94,17 +142,33 @@ class ScheduleViewController: UIViewController {
          daysOfWeek = Array(Set(lessonmodels.map { (les) -> Int in les.dayOfWeek })).sorted()
          self.collectionView.reloadData()
          */
-        
-        network.getGroupSchedule(id) { result in
-            switch result {
-            case let .success(schedule):
-                self.lessonmodels = self.convertSchOfGroup(schedule).sorted(by: {($0.dayOfWeek,$0.timeSince) < ($1.dayOfWeek,$1.timeSince)})
-                self.daysOfWeek = Array(Set(self.lessonmodels.map { (les) -> Int in les.dayOfWeek })).sorted()
-                self.collectionView.reloadData()
-            case let .failure(error):
-                print(error)
+        switch role {
+        case "Student":
+            network.getGroupSchedule(id) { result in
+                switch result {
+                case let .success(schedule):
+                    self.lessonmodels = self.convertSchOfGroup(schedule).sorted(by: {($0.dayOfWeek,$0.timeSince) < ($1.dayOfWeek,$1.timeSince)})
+                    self.daysOfWeek = Array(Set(self.lessonmodels.map { (les) -> Int in les.dayOfWeek })).sorted()
+                    self.collectionView.reloadData()
+                case let .failure(error):
+                    print(error)
+                }
             }
+        case "Teacher":
+            network.getTeacherSchedule(id) { result in
+                switch result {
+                case let .success(schedule):
+                    self.lessonmodels = self.convertSchOfTeacher(schedule).sorted(by: {($0.dayOfWeek,$0.timeSince) < ($1.dayOfWeek,$1.timeSince)})
+                    self.daysOfWeek = Array(Set(self.lessonmodels.map { (les) -> Int in les.dayOfWeek })).sorted()
+                    self.collectionView.reloadData()
+                case let .failure(error):
+                    print(error)
+                }
+            }
+        default:
+            print("Error: unknown role")
         }
+
         
     }
     func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {

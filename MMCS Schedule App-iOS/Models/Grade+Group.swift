@@ -32,3 +32,8 @@ class Group: Codable {
     }
 }
 
+class TechGroup: Codable {
+    let degree, name: String
+    let uberid, groupnum, gradenum: Int
+}
+

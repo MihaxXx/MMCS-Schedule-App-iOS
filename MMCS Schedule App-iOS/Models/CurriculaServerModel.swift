@@ -12,6 +12,12 @@ struct SchOfGroup: Codable{
     var curricula: [CurriculaServerModel]
 }
 
+struct SchOfTeacher: Codable {
+    var lessons: [LessonServerModel]
+    var curricula: [CurriculaServerModel]
+    var groups: [TechGroup]
+}
+
 struct CurriculaServerModel: Codable {
 	
 	var roomid: Int

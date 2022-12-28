@@ -109,7 +109,7 @@ extension ViewController: UIPickerViewDataSource, UIPickerViewDelegate{
                 List_NmOrGr.placeholder = "Курс"
             }
             else{
-                //TODO: Fill list with teachers
+                getTeachers()
                 List_NmOrGr.resignFirstResponder()
                 List_NmOrGr.isHidden = false
                 List_NmOrGr.placeholder = "ФИО"
@@ -118,17 +118,13 @@ extension ViewController: UIPickerViewDataSource, UIPickerViewDelegate{
             List_NmOrGr.text = NmOrGr[row]
             List_NmOrGr.resignFirstResponder()
             
-            //TODO: Fill list with coresponding groups
-            if (Role.text=="Student")
-            {
+            if (Role.text=="Student") {
                 getGroups(forGrade: grades[row].id)
                 List_Groups.resignFirstResponder()
                 List_Groups.isHidden = false
             }
-            else
-            {
-                //Replace row with teacher ID
-                id = row
+            else {
+                id = teachers[row].id
                 Ok_btn.isEnabled = true
             }
         case 3:
@@ -142,11 +138,6 @@ extension ViewController: UIPickerViewDataSource, UIPickerViewDelegate{
         }
     }
     
-    /*@objc func Ok_btnClicked(){
-        let story = UIStoryboard(name: "Main", bundle: nil)
-        let controller = story.instantiateViewController(identifier: "") as
-    }*/
-    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destination.
         // Pass the selected object to the new view controller.
@@ -158,33 +149,40 @@ extension ViewController: UIPickerViewDataSource, UIPickerViewDelegate{
             vc.network = network
         }
     }
+    
     func getGrades(){
         network.getGradeList() { result in
             switch result {
             case let .success(grades):
                 self.grades = grades
-                self.fillGrades()
+                self.NmOrGr = self.grades.map { (gr) -> String in gr.degree + ", " + String(gr.num) }
             case let .failure(error):
                 print(error)
             }
         }
     }
-    func fillGrades(){
-         NmOrGr = grades.map { (gr) -> String in gr.degree + ", " + String(gr.num) }
-    }
+
     func getGroups(forGrade gradeID: Int){
         network.getGroupList(gradeID) {
             result in
             switch result {
             case let .success(groups):
                 self.groups = groups
-                self.fillGroups()
+                self.Groups = self.groups.map { (gr) -> String in gr.name + ", " + String(gr.num) }
             case let .failure(error):
                 print(error)
             }
         }
     }
-    func fillGroups(){
-        Groups = groups.map { (gr) -> String in gr.name + ", " + String(gr.num) }
+    func getTeachers(){
+        network.getTeacherList() { result in
+            switch result {
+            case let .success(teachers):
+                self.teachers = teachers
+                self.NmOrGr = self.teachers.map { (teacher) -> String in teacher.name }
+            case let .failure(error):
+                print(error)
+            }
+        }
     }
 }

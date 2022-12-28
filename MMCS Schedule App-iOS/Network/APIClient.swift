@@ -77,4 +77,21 @@ class APIClient {
             }
         }.resume()
     }
+    func getTeacherSchedule(_ teacherID: Int, completion: @escaping (Result<SchOfTeacher>) -> ()) {
+        let request = Request().makeRequest(for: .teacherschedule(teacherID: teacherID))
+        urlSession.dataTask(with: request) { (data, response, error) in
+            if let response = response as? HTTPURLResponse, let data = data {
+                let result = Response.handleResponse(for: response)
+                switch result {
+                case .success:
+                    let result = try? JSONDecoder().decode(SchOfTeacher.self, from: data)
+                    DispatchQueue.main.async {
+                        completion(Result.success(result!))
+                    }
+                case .failure:
+                    completion(Result.failure(NetworkError.decodingFailed))
+                }
+            }
+        }.resume()
+    }
 }
