@@ -81,8 +81,7 @@
 			isa = PBXGroup;
 			children = (
 				74A7E93F295BADC40070C8BB /* Network */,
-				74A7E937295B63020070C8BB /* SubjectCollectionCell.swift */,
-				74A7E938295B63020070C8BB /* SubjectCollectionCell.xib */,
+				74BDC37D295D079800AAB5BD /* Cells */,
 				74A7E88D295A5EC80070C8BB /* Models */,
 				7467A3C12959CF18007B4F45 /* AppDelegate.swift */,
 				7467A3C32959CF18007B4F45 /* SceneDelegate.swift */,
@@ -117,6 +116,23 @@
 				74A7E943295BADD70070C8BB /* Response.swift */,
 			);
 			path = Network;
+			sourceTree = "<group>";
+		};
+		74BDC37C295D078E00AAB5BD /* SubjectCollectionCell */ = {
+			isa = PBXGroup;
+			children = (
+				74A7E937295B63020070C8BB /* SubjectCollectionCell.swift */,
+				74A7E938295B63020070C8BB /* SubjectCollectionCell.xib */,
+			);
+			path = SubjectCollectionCell;
+			sourceTree = "<group>";
+		};
+		74BDC37D295D079800AAB5BD /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				74BDC37C295D078E00AAB5BD /* SubjectCollectionCell */,
+			);
+			path = Cells;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
